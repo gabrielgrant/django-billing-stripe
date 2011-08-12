@@ -1,4 +1,6 @@
-Implements billing with Stripe in a way that avoids any need for PCI
+This processor plugin for django-billing
+(https://github.com/gabrielgrant/django-billing)
+implements billing with Stripe in a way that avoids any need for PCI
 compliance, by ensuring that all sensitive info is only ever on
 Stripe's servers.
 
@@ -22,9 +24,15 @@ contains more details.
 
 The only stripe-processor-specific info is that you'll need to add
 the class "billing-stripe-form" to any forms that collect payment info
-(on the payment details collection and update pages).
+(on the payment details collection and update pages), and be sure to
+include the form media:
 
+<!-- in head section -->
+{{ form.media }}
 
+<!-- ... -->
+
+<!-- in body section -->
 <form class="billing-stripe-form" action="" >
 {{ form.as_p }}
 <button type="submit" name="submit-button">Submit</button>
