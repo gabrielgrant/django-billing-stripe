@@ -1,0 +1,21 @@
+                <div class="expiry-wrapper">
+                    <select class="card-expiry-month stripe-sensitive required">
+                    </select>
+                    <script type="text/javascript">
+                        var select = $(".card-expiry-month"),
+                            month = new Date().getMonth() + 1;
+                        for (var i = 1; i <= 12; i++) {
+                            select.append($("<option value='"+i+"' "+(month === i ? "selected" : "")+">"+i+"</option>"))
+                        }
+                    </script>
+                    <span> / </span>
+                    <select class="card-expiry-year stripe-sensitive required"></select>
+                    <script type="text/javascript">
+                        var select = $(".card-expiry-year"),
+                            year = new Date().getFullYear();
+
+                        for (var i = 0; i < 12; i++) {
+                            select.append($("<option value='"+(i + year)+"' "+(i === 0 ? "selected" : "")+">"+(i + year)+"</option>"))
+                        }
+                    </script>
+                </div>

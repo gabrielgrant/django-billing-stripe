@@ -1,0 +1,31 @@
+Implements billing with Stripe in a way that avoids any need for PCI
+compliance, by ensuring that all sensitive info is only ever on
+Stripe's servers.
+
+Installation
+------------
+
+1. `pip install django-billing-stripe`
+2. add `billing.processor.stripe` to your list of installed apps
+3. Set your public and private keys in `settings.py`:
+
+    STRIPE_PUBLIC_KEY = "from https://manage.stripe.com/account"
+    STRIPE_SECRET_KEY = "from https://manage.stripe.com/account"
+
+
+Usage
+-----
+
+You'll need to create templates for django-billing. Examples can be found
+in django-billing's example project, and django-billing's documentation
+contains more details.
+
+The only stripe-processor-specific info is that you'll need to add
+the class "billing-stripe-form" to any forms that collect payment info
+(on the payment details collection and update pages).
+
+
+<form class="billing-stripe-form" action="" >
+{{ form.as_p }}
+<button type="submit" name="submit-button">Submit</button>
+</form>

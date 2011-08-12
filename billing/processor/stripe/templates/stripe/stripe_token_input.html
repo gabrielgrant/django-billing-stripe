@@ -1,0 +1,6 @@
+<input type="hidden" name="{{ name }}" class="stripe-token" value="{{ attrs.value }}" />
+<span class="payment-errors"></span>
+<script type="text/javascript">
+    Stripe.setPublishableKey('{{ pubKey }}');
+    $('billing-stripe-form').addClass('billing-stripe-js');
+</script>
