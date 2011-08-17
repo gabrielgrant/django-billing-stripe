@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='django-billing.processor.stripe',
-    version='0.1.0dev',
+    version='0.1.1dev',
     author='Gabriel Grant',
     packages=['billing.processor.stripe', 'billing.processor.stripe.tests'],
     license='LGPL',
