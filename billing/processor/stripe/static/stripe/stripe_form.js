@@ -70,6 +70,9 @@ $(document).ready(function() {
     $(".billing-stripe-form").validate({
         submitHandler: submit,
         rules: {
+            "name" : {
+                required: true
+            },
             "card-cvc" : {
                 cardCVC: true,
                 required: true
