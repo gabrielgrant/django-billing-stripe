@@ -1,5 +1,6 @@
 from django.forms.widgets import HiddenInput, TextInput
 from django.utils.safestring import mark_safe
+from django.utils.encoding import force_unicode
 from django.conf import settings
 from django.template.loader import render_to_string
 
