@@ -16,7 +16,7 @@ class BaseBillingDetailsForm(forms.Form):
     class Media:
         js = (
             'https://js.stripe.com/v1/',
-            'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js',
+            'https://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js',
             'stripe/stripe_form.js',
         )
 
