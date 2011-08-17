@@ -7,8 +7,8 @@ from billing.processor.stripe.widgets import ExpirationInput, StripeTokenInput
 class BaseBillingDetailsForm(forms.Form):
     name = forms.CharField(label="Cardholder's name")
     card_number = forms.CharField(widget=CardNumberInput, required=False)
-    cvc = forms.CharField(widget=CVCInput, required=False, label='CVC')
     expiration = forms.CharField(widget=ExpirationInput, required=False)
+    cvc = forms.CharField(widget=CVCInput, required=False, label='Security code')
     stripe_token = forms.CharField(widget=StripeTokenInput)
     #def __init__(self, billing_account, *args, **kwargs):
     #    super(BaseBillingDetailsForm, self).__init__(*args, **kwargs)
