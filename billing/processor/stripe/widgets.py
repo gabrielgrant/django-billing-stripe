@@ -1,8 +1,9 @@
 from django.forms.widgets import HiddenInput, TextInput
 from django.utils.safestring import mark_safe
 from django.utils.encoding import force_unicode
-from django.conf import settings
 from django.template.loader import render_to_string
+
+from billing.processor.stripe import models
 
 class StripeTokenInput(HiddenInput):
     """
@@ -16,7 +17,7 @@ class StripeTokenInput(HiddenInput):
         if value != '':
             # Only add the 'value' attribute if a value is non-empty.
             final_attrs['value'] = force_unicode(self._format_value(value))
-        context = dict(pubKey=settings.STRIPE_PUBLIC_API_KEY, name=name, attrs=final_attrs)
+        context = dict(pubKey=models.STRIPE_PUBLIC_API_KEY, name=name, attrs=final_attrs)
         
         #return mark_safe(render_to_string('stripe/stripe_form_script_v0.html', context))
         return mark_safe(render_to_string('stripe/stripe_token_input.html', context))

@@ -1,4 +1,5 @@
 from datetime import date
+import sys
 
 from django.db import models
 from django.conf import settings
@@ -8,8 +9,37 @@ import stripe
 #from billing.models import Account
 from billing.processor.stripe import validators
 
-stripe.api_key = settings.STRIPE_SECRET_API_KEY
-settings.STRIPE_PUBLIC_API_KEY
+class ConfigurationError(RuntimeError):
+    pass
+
+if getattr(settings, 'STRIPE_LIVE_MODE', False):
+    try:
+        STRIPE_SECRET_API_KEY = settings.STRIPE_LIVE_SECRET_API_KEY
+    except AttributeError:
+        raise ConfigurationError,  \
+            "STIRPE_LIVE_MODE is True, but STRIPE_LIVE_SECRET_API_KEY isn't provided.",  \
+            sys.exc_info()[2]
+    try:
+        STRIPE_PUBLIC_API_KEY = settings.STRIPE_LIVE_PUBLIC_API_KEY
+    except AttributeError:
+        raise ConfigurationError,  \
+            "STIRPE_LIVE_MODE is True, but STRIPE_LIVE_PUBLIC_API_KEY isn't provided.",  \
+            sys.exc_info()[2]
+else:
+    try:
+        STRIPE_SECRET_API_KEY = settings.STRIPE_TEST_SECRET_API_KEY
+    except AttributeError:
+        raise ConfigurationError,  \
+            "STIRPE_LIVE_MODE is False, but STRIPE_TEST_SECRET_API_KEY isn't provided.",  \
+            sys.exc_info()[2]
+    try:
+        STRIPE_PUBLIC_API_KEY = settings.STRIPE_TEST_PUBLIC_API_KEY
+    except AttributeError:
+        raise ConfigurationError,  \
+            "STIRPE_LIVE_MODE is False, but STRIPE_TEST_PUBLIC_API_KEY isn't provided.",  \
+            sys.exc_info()[2]
+
+stripe.api_key = STRIPE_SECRET_API_KEY
 
 
 CARD_TYPES = (
