@@ -27,8 +27,8 @@ def main():
         ROOT_URLCONF = '',
         DEBUG = True,
 		TEMPLATE_DEBUG = True,
-		STRIPE_SECRET_API_KEY = 'SECRET_API_KEY',
-		STRIPE_PUBLIC_API_KEY = 'PUBLIC_API_KEY',
+		STRIPE_TEST_SECRET_API_KEY = 'SECRET_API_KEY',
+		STRIPE_TEST_PUBLIC_API_KEY = 'PUBLIC_API_KEY',
     ) 
     
     #call_command('syncdb')
