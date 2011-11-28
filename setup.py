@@ -4,6 +4,7 @@ setup(
     name='django-billing.processor.stripe',
     version='0.1.1dev',
     author='Gabriel Grant',
+    author_email='g@briel.ca',
     packages=['billing.processor.stripe', 'billing.processor.stripe.tests'],
     license='LGPL',
     long_description=open('README').read(),
